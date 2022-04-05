@@ -1,32 +1,69 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <router-link class="navbar-brand btn btn-outline-dark" to="/dashboard">
+          Dashboard
+          <span class="badge bg-danger">0</span>
+        </router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <router-link class="nav-link active" aria-current="page" to="/">
+              |Products|
+            </router-link>
+            <router-link
+              class="nav-link active"
+              aria-current="page"
+              to="/producer"
+            >
+              |producer|
+            </router-link>
+          </div>
+        </div>
+        <router-link to="/user/2">
+          <button class="btn btn-outline-dark">
+            <span class="icono-user"></span>
+          </button>
+        </router-link>
+      </div>
     </nav>
-    <router-view />
+    <router-view></router-view>
+    <footer>
+      <p><b>Author: </b>Arya shabane</p>
+    </footer>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<script>
+export default {
+  data() {
+    return {
+      var1: "yes",
+    };
+  },
+};
+</script>
+
+<style scoped>
+footer {
   text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 </style>
