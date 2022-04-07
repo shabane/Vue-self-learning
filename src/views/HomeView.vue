@@ -3,6 +3,7 @@
     <div
       class="row row-cols-1 row-cols-md-3 g-5"
       style="margin-top: 3px; margin-left: 1%; width: 98%; margin-bottom: 10%"
+      v-if="lst_product.length >= 1"
     >
       <div class="col" v-for="item in lst_product" :key="item.id">
         <router-link :to="'/product/' + item.id + '/'">
@@ -29,6 +30,7 @@
         </router-link>
       </div>
     </div>
+    <strong v-else>there is no item to buy</strong>
   </div>
 </template>
 
@@ -53,5 +55,8 @@ export default {
 <style scoped>
 a {
   text-decoration: unset;
+}
+strong {
+  color: red;
 }
 </style>
