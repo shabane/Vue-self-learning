@@ -26,7 +26,10 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-success">
+        <button
+          class="btn btn-outline-success"
+          @click="AddToCard($route.params.id)"
+        >
           Add to card
           <span class="icono-cart"></span>
         </button>
@@ -39,30 +42,35 @@
   </div>
 </template>
 
-<script>
+<script type="module">
 import axios from "axios";
+import { AddingToCard } from "@/modules.js";
 export default {
   data() {
     return {
       dict_product: {},
       lst_producer: [],
+      int_card_items: 0,
     };
   },
   created() {
     axios
       .get("http://127.0.0.1:8000/api/prduct/" + this.$route.params.id + "/")
       .then((res) => {
-        console.log(res);
         this.dict_product = res.data;
         for (let i of this.dict_product.producer) {
           axios
             .get("http://127.0.0.1:8000/api/producer/" + i + "/")
             .then((res2) => {
-              console.log(res2.data);
               this.lst_producer.push(res2.data);
             });
         }
       });
+  },
+  methods: {
+    AddToCard(id) {
+      AddingToCard(id);
+    },
   },
 };
 </script>
